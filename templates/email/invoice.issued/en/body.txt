@@ -1,0 +1,8 @@
+Invoice {{ data.number }} for {{ data.total }} {{ data.currency }} has been issued{% if community_name %} by {{ community_name }}{% endif %}.
+
+It is due on {{ data.due_date }}.
+
+{{ app_url }}/billing
+
+--
+You are receiving this message because it concerns your OptimCE account.

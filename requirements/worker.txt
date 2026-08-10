@@ -1,0 +1,13 @@
+-r base.txt
+
+# Email templates. Same pin as document-generation, the repo's other Jinja user.
+jinja2==3.1.4
+
+# SMTP transport. Declared (and unused) in four services' base.txt since the
+# template was written; this is its first real consumer.
+aiosmtplib>=3.0.0
+
+# Brevo transport. httpx is test-only everywhere else in this monorepo — this is
+# the first production HTTP client in the Python services. Pinned to the same
+# version the test suites already use so there is one httpx in the tree.
+httpx==0.28.1

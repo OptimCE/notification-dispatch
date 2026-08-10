@@ -1,0 +1,8 @@
+Invoice {{ data.number }}{% if community_name %} by {{ community_name }}{% endif %} has passed its due date and is still unpaid.
+
+If you have already paid it, you can ignore this message.
+
+{{ app_url }}/billing
+
+--
+You are receiving this message because it concerns your OptimCE account.

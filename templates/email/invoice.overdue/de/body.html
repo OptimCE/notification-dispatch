@@ -1,0 +1,9 @@
+{% extends "_layout.html" %}
+{% block content %}
+<p style="margin:0 0 14px 0;">Rechnung <strong>{{ data.number }}</strong>{% if community_name %} von {{ community_name }}{% endif %} ist überfällig und noch nicht bezahlt.</p>
+<p style="margin:0 0 14px 0;">Falls Sie bereits bezahlt haben, können Sie diese Nachricht ignorieren.</p>
+<p style="margin:22px 0 6px 0;"><a href="{{ app_url }}/billing" style="display:inline-block;padding:10px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;">OptimCE öffnen</a></p>
+{% endblock %}
+{% block footer %}
+Sie erhalten diese Nachricht, weil sie Ihr OptimCE-Konto betrifft.
+{% endblock %}

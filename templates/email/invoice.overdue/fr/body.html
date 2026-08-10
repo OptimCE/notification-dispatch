@@ -1,0 +1,9 @@
+{% extends "_layout.html" %}
+{% block content %}
+<p style="margin:0 0 14px 0;">La facture <strong>{{ data.number }}</strong>{% if community_name %} par {{ community_name }}{% endif %} a dépassé sa date d'échéance et reste impayée.</p>
+<p style="margin:0 0 14px 0;">Si vous l'avez déjà réglée, vous pouvez ignorer ce message.</p>
+<p style="margin:22px 0 6px 0;"><a href="{{ app_url }}/billing" style="display:inline-block;padding:10px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;">Ouvrir OptimCE</a></p>
+{% endblock %}
+{% block footer %}
+Vous recevez ce message parce qu'il concerne votre compte OptimCE.
+{% endblock %}

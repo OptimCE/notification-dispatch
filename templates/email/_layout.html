@@ -1,0 +1,35 @@
+{#
+  Shared chrome for every HTML body.
+
+  Deliberately plain: inline styles and a single table, because mail clients
+  strip <style> blocks, ignore most modern CSS, and Outlook still renders with
+  Word's engine. Anything cleverer looks worse in more places than it looks
+  better.
+
+  The footer is where §1.6's consent rule is enforced: an INFORMATIONAL message
+  offers a way out, a TRANSACTIONAL one must not — an invoice or an invitation
+  is not something a recipient can unsubscribe from, and offering the choice
+  would be a lie.
+#}
+<div style="margin:0;padding:24px 12px;background:#f4f5f7;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1f2933;">
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;">
+    <tr>
+      <td style="padding:24px 28px 8px 28px;">
+        <div style="font-size:18px;font-weight:600;color:#0f766e;">OptimCE</div>
+        {% if community_name %}
+        <div style="font-size:13px;color:#616e7c;margin-top:2px;">{{ community_name }}</div>
+        {% endif %}
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:8px 28px 24px 28px;font-size:15px;line-height:1.55;">
+        {% block content %}{% endblock %}
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:0 28px 24px 28px;font-size:12px;line-height:1.5;color:#7b8794;border-top:1px solid #e4e7eb;padding-top:16px;">
+        {% block footer %}{% endblock %}
+      </td>
+    </tr>
+  </table>
+</div>

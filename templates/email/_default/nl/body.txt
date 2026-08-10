@@ -1,0 +1,8 @@
+Er staat een nieuwe melding klaar op uw OptimCE-account.
+
+Meld u aan om ze te lezen.
+
+{{ app_url }}
+
+--
+U ontvangt dit bericht omdat het uw OptimCE-account betreft.

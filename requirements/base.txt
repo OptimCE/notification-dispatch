@@ -1,0 +1,23 @@
+# Pydantic
+pydantic==2.10.3
+pydantic-settings==2.6.1
+
+# The CRM database is the queue. This service owns no tables in it — the
+# delivery schema is crm-backend's — but it is the only IO it needs.
+sqlalchemy[asyncio]==2.0.36
+asyncpg==0.30.0
+
+# Logging
+python-json-logger==3.2.0
+
+# Observability (OTLP). Worker-only subset — no FastAPI/ASGI instrumentation
+# (this service has no HTTP surface).
+opentelemetry-api==1.39.1
+opentelemetry-sdk==1.39.1
+opentelemetry-semantic-conventions==0.60b1
+opentelemetry-proto==1.39.1
+opentelemetry-exporter-otlp-proto-common==1.39.1
+opentelemetry-exporter-otlp-proto-grpc==1.39.1
+opentelemetry-exporter-otlp-proto-http==1.39.1
+opentelemetry-instrumentation==0.60b1
+opentelemetry-instrumentation-sqlalchemy==0.60b1

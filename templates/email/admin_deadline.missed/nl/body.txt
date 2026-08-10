@@ -1,0 +1,8 @@
+Een {{ data.deadline_type }}-deadline{% if community_name %} voor {{ community_name }}{% endif %} verviel op {{ data.due_date }} en is als gemist gemarkeerd.
+
+Een gemiste regelgevende deadline kan juridische gevolgen hebben voor de gemeenschap. Open het dossier om te zien wat er nodig is.
+
+{{ app_url }}/administrative-document/dossiers/{{ data.dossier_id }}
+
+--
+U ontvangt dit bericht omdat het uw OptimCE-account betreft.

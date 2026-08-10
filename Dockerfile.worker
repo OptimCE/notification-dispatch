@@ -1,0 +1,51 @@
+# ---------- stage 1: build ----------
+FROM python:3.12-slim AS builder
+
+WORKDIR /build
+COPY requirements/base.txt   requirements/base.txt
+COPY requirements/worker.txt requirements/worker.txt
+
+RUN pip install --no-cache-dir --prefix=/install -r requirements/worker.txt
+
+# ---------- stage 2: runtime ----------
+FROM python:3.12-slim
+
+# tini gives us a real PID 1: forwards SIGTERM to the Python process so the loop
+# can finish the message it is sending, and reaps any zombies on shutdown.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends tini \
+    && rm -rf /var/lib/apt/lists/*
+
+# Security: non-root user.
+RUN groupadd -r app && useradd -r -g app -d /app -s /sbin/nologin app
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+# Installed packages from the builder.
+COPY --from=builder /install /usr/local
+
+# Application code. Worker-only: no api/, no main.py at the root, no
+# scripts/sql/ — this service owns no tables.
+COPY core/      core/
+COPY domain/    domain/
+COPY adapters/  adapters/
+COPY infra/     infra/
+COPY shared/    shared/
+COPY worker/    worker/
+# The email bodies. Without this the image ships a renderer and no templates,
+# and every message dead-letters as TemplateError.
+COPY templates/ templates/
+
+RUN chown -R app:app /app
+USER app
+
+# Liveness: the poll loop touches /tmp/worker.alive every tick. ~3 missed ticks
+# at the default 15s interval = unhealthy.
+HEALTHCHECK --interval=30s --timeout=5s --start-period=60s --retries=3 \
+    CMD python -c "import os, time, sys; sys.exit(0 if time.time() - os.path.getmtime('/tmp/worker.alive') < 60 else 1)"
+
+ENTRYPOINT ["/usr/bin/tini", "--"]
+CMD ["python", "-m", "worker.main"]

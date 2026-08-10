@@ -1,0 +1,8 @@
+Une échéance {{ data.deadline_type }}{% if community_name %} pour {{ community_name }}{% endif %} était due le {{ data.due_date }} et a été marquée comme dépassée.
+
+Une échéance réglementaire dépassée peut avoir des conséquences juridiques pour la communauté. Ouvrez le dossier pour voir ce qui est requis.
+
+{{ app_url }}/administrative-document/dossiers/{{ data.dossier_id }}
+
+--
+Vous recevez ce message parce qu'il concerne votre compte OptimCE.

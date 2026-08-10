@@ -1,0 +1,26 @@
+# Virtualenvs
+.venv/
+venv/
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local env + secrets (only .env.test is tracked)
+.env
+.env.local
+.env.staging
+.env.production
+.env.*.local
+
+# IDE / agent state
+.idea/
+.vscode/
+.claude/
+
+# Local template cache / scratch output
+/tmp/
+output/

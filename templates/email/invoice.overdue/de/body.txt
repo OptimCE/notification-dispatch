@@ -1,0 +1,8 @@
+Rechnung {{ data.number }}{% if community_name %} von {{ community_name }}{% endif %} ist überfällig und noch nicht bezahlt.
+
+Falls Sie bereits bezahlt haben, können Sie diese Nachricht ignorieren.
+
+{{ app_url }}/billing
+
+--
+Sie erhalten diese Nachricht, weil sie Ihr OptimCE-Konto betrifft.

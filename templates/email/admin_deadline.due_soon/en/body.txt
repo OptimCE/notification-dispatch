@@ -1,0 +1,9 @@
+A {{ data.deadline_type }} deadline{% if community_name %} for {{ community_name }}{% endif %} falls due on {{ data.due_date }}.
+
+Open the dossier to see what is still outstanding.
+
+{{ app_url }}/administrative-document/dossiers/{{ data.dossier_id }}
+
+--
+You are receiving this message because it concerns your OptimCE account.
+Manage your notification preferences: {{ preferences_url }}

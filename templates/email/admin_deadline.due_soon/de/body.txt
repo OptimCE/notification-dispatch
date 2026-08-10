@@ -1,0 +1,9 @@
+Eine {{ data.deadline_type }}-Frist{% if community_name %} voor {{ community_name }}{% endif %} läuft am {{ data.due_date }} ab.
+
+Öffnen Sie das Dossier, um zu sehen, was noch offen ist.
+
+{{ app_url }}/administrative-document/dossiers/{{ data.dossier_id }}
+
+--
+Sie erhalten diese Nachricht, weil sie Ihr OptimCE-Konto betrifft.
+Ihre Benachrichtigungseinstellungen verwalten: {{ preferences_url }}

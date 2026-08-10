@@ -1,0 +1,7 @@
+-r worker.txt
+
+# Linting & formatting
+ruff==0.8.4
+
+# Static type checking
+mypy==1.13.0

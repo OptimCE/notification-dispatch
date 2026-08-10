@@ -1,0 +1,8 @@
+You have been invited to join {% if community_name %}{{ community_name }}{% else %}a community{% endif %} as a manager on OptimCE.
+
+Sign in with this email address — or create an account with it if you do not have one yet — and the invitation will be waiting for you.
+
+{{ app_url }}
+
+--
+You are receiving this message because it concerns your OptimCE account.

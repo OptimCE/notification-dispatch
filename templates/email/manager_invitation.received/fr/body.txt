@@ -1,0 +1,8 @@
+Vous avez été invité à rejoindre {% if community_name %}{{ community_name }}{% else %}une communauté{% endif %} en tant que gestionnaire sur OptimCE.
+
+Connectez-vous avec cette adresse e-mail — ou créez un compte avec celle-ci si vous n'en avez pas encore — et l'invitation vous y attendra.
+
+{{ app_url }}
+
+--
+Vous recevez ce message parce qu'il concerne votre compte OptimCE.

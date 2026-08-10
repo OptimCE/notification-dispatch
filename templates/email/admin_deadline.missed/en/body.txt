@@ -1,0 +1,8 @@
+A {{ data.deadline_type }} deadline{% if community_name %} for {{ community_name }}{% endif %} was due on {{ data.due_date }} and has been marked as missed.
+
+A missed regulatory deadline can have legal consequences for the community. Open the dossier to see what is required.
+
+{{ app_url }}/administrative-document/dossiers/{{ data.dossier_id }}
+
+--
+You are receiving this message because it concerns your OptimCE account.

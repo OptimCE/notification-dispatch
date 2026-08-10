@@ -1,0 +1,9 @@
+Een {{ data.deadline_type }}-deadline{% if community_name %} voor {{ community_name }}{% endif %} verstrijkt op {{ data.due_date }}.
+
+Open het dossier om te zien wat er nog openstaat.
+
+{{ app_url }}/administrative-document/dossiers/{{ data.dossier_id }}
+
+--
+U ontvangt dit bericht omdat het uw OptimCE-account betreft.
+Uw meldingsvoorkeuren beheren: {{ preferences_url }}

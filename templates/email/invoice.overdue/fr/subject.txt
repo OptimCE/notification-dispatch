@@ -1,0 +1,1 @@
+La facture {{ data.number }} a dépassé sa date d'échéance

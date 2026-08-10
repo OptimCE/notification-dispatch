@@ -1,0 +1,50 @@
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+filterwarnings = ["error::DeprecationWarning"]
+
+[tool.coverage.run]
+omit = ["tests/*", "*/main.py"]
+
+[tool.coverage.report]
+show_missing = true
+
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+    "E", "F", "W",
+    "I",
+    "B",       # ← bugbear
+    "S",       # ← bandit (security)
+    "UP",
+    "N",
+    "C4",
+    "SIM",
+    "RUF",
+    "ASYNC",
+    "PIE",
+    "PT",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101", "S105", "S106", "S311", "N806", "PT018"]
+
+[tool.mypy]
+python_version = "3.12"
+plugins = ["pydantic.mypy"]
+strict = false
+warn_return_any = true
+warn_unused_ignores = true
+exclude = ["^venv/", "^\\.venv/"]
+
+[[tool.mypy.overrides]]
+module = [
+    "asyncpg.*",
+    "aiosmtplib.*",
+]
+ignore_missing_imports = true

@@ -1,0 +1,8 @@
+Sie wurden eingeladen, {% if community_name %}{{ community_name }}{% else %}einer Gemeinschaft{% endif %} als Mitglied auf OptimCE beizutreten.
+
+Melden Sie sich mit dieser E-Mail-Adresse an — oder erstellen Sie damit ein Konto, falls Sie noch keines haben — und die Einladung wartet auf Sie.
+
+{{ app_url }}
+
+--
+Sie erhalten diese Nachricht, weil sie Ihr OptimCE-Konto betrifft.

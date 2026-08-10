@@ -1,0 +1,8 @@
+Factuur {{ data.number }} voor {{ data.total }} {{ data.currency }} is uitgereikt{% if community_name %} door {{ community_name }}{% endif %}.
+
+De vervaldatum is {{ data.due_date }}.
+
+{{ app_url }}/billing
+
+--
+U ontvangt dit bericht omdat het uw OptimCE-account betreft.

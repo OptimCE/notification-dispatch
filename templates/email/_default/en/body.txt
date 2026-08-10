@@ -1,0 +1,8 @@
+There is a new notification on your OptimCE account.
+
+Sign in to read it.
+
+{{ app_url }}
+
+--
+You are receiving this message because it concerns your OptimCE account.

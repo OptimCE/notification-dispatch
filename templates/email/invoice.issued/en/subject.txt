@@ -1,0 +1,1 @@
+Your invoice {{ data.number }} is available

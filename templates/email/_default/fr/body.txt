@@ -1,0 +1,8 @@
+Une nouvelle notification vous attend sur votre compte OptimCE.
+
+Connectez-vous pour la consulter.
+
+{{ app_url }}
+
+--
+Vous recevez ce message parce qu'il concerne votre compte OptimCE.

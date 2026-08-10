@@ -1,0 +1,8 @@
+Factuur {{ data.number }}{% if community_name %} door {{ community_name }}{% endif %} is over de vervaldatum en nog niet betaald.
+
+Als u ze al betaald hebt, kunt u dit bericht negeren.
+
+{{ app_url }}/billing
+
+--
+U ontvangt dit bericht omdat het uw OptimCE-account betreft.

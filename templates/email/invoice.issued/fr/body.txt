@@ -1,0 +1,8 @@
+La facture {{ data.number }} d'un montant de {{ data.total }} {{ data.currency }} a été émise{% if community_name %} par {{ community_name }}{% endif %}.
+
+Elle est due le {{ data.due_date }}.
+
+{{ app_url }}/billing
+
+--
+Vous recevez ce message parce qu'il concerne votre compte OptimCE.

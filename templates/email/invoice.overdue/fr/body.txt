@@ -1,0 +1,8 @@
+La facture {{ data.number }}{% if community_name %} par {{ community_name }}{% endif %} a dépassé sa date d'échéance et reste impayée.
+
+Si vous l'avez déjà réglée, vous pouvez ignorer ce message.
+
+{{ app_url }}/billing
+
+--
+Vous recevez ce message parce qu'il concerne votre compte OptimCE.

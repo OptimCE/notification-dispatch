@@ -1,0 +1,8 @@
+Eine {{ data.deadline_type }}-Frist{% if community_name %} voor {{ community_name }}{% endif %} war am {{ data.due_date }} fällig und wurde als versäumt markiert.
+
+Eine versäumte regulatorische Frist kann rechtliche Folgen für die Gemeinschaft haben. Öffnen Sie das Dossier, um zu sehen, was erforderlich ist.
+
+{{ app_url }}/administrative-document/dossiers/{{ data.dossier_id }}
+
+--
+Sie erhalten diese Nachricht, weil sie Ihr OptimCE-Konto betrifft.

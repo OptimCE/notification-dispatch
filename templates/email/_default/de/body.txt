@@ -1,0 +1,8 @@
+Auf Ihrem OptimCE-Konto liegt eine neue Benachrichtigung.
+
+Melden Sie sich an, um sie zu lesen.
+
+{{ app_url }}
+
+--
+Sie erhalten diese Nachricht, weil sie Ihr OptimCE-Konto betrifft.

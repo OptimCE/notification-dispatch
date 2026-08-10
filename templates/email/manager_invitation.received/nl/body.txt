@@ -1,0 +1,8 @@
+U bent uitgenodigd om {% if community_name %}{{ community_name }}{% else %}een gemeenschap{% endif %} te vervoegen als beheerder op OptimCE.
+
+Meld u aan met dit e-mailadres — of maak er een account mee aan als u er nog geen hebt — en de uitnodiging staat voor u klaar.
+
+{{ app_url }}
+
+--
+U ontvangt dit bericht omdat het uw OptimCE-account betreft.

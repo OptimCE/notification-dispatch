@@ -1,0 +1,9 @@
+Une échéance {{ data.deadline_type }}{% if community_name %} pour {{ community_name }}{% endif %} arrive à terme le {{ data.due_date }}.
+
+Ouvrez le dossier pour voir ce qu'il reste à faire.
+
+{{ app_url }}/administrative-document/dossiers/{{ data.dossier_id }}
+
+--
+Vous recevez ce message parce qu'il concerne votre compte OptimCE.
+Gérer vos préférences de notification: {{ preferences_url }}

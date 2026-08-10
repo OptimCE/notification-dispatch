@@ -1,0 +1,1 @@
+Votre facture {{ data.number }} est disponible

@@ -1,0 +1,9 @@
+{% extends "_layout.html" %}
+{% block content %}
+<p style="margin:0 0 14px 0;">Vous avez été invité à rejoindre {% if community_name %}{{ community_name }}{% else %}une communauté{% endif %} en tant que <strong>gestionnaire</strong> sur OptimCE.</p>
+<p style="margin:0 0 14px 0;">Connectez-vous avec cette adresse e-mail — ou créez un compte avec celle-ci si vous n'en avez pas encore — et l'invitation vous y attendra.</p>
+<p style="margin:22px 0 6px 0;"><a href="{{ app_url }}" style="display:inline-block;padding:10px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;">Ouvrir OptimCE</a></p>
+{% endblock %}
+{% block footer %}
+Vous recevez ce message parce qu'il concerne votre compte OptimCE.
+{% endblock %}
