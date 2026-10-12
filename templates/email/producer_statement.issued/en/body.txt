@@ -1,0 +1,8 @@
+Producer statement {{ data.number }} for {{ data.total }} {{ data.currency }} has been issued{% if community_name %} by {{ community_name }}{% endif %}.
+
+This amount will be paid to you by the community; you have nothing to pay.
+
+{{ app_url }}/billing
+
+--
+You are receiving this message because it concerns your OptimCE account.

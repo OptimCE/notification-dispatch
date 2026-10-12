@@ -193,6 +193,50 @@ def test_a_missing_data_key_fails_loudly_rather_than_rendering_a_blank():
         RENDERER.render(broken, community_name="C")
 
 
+@pytest.mark.parametrize("locale", LOCALES)
+def test_credit_note_without_a_corrected_number_says_nothing_about_it(locale: str):
+    """`corrects_number` is null when the credited invoice was never numbered.
+
+    The sentence naming it must disappear, not render "None" at the member.
+    """
+    message = _message("credit_note.issued", locale=locale)
+    without = ClaimedMessage(
+        id=message.id,
+        type=message.type,
+        category=message.category,
+        recipient=message.recipient,
+        recipient_name=message.recipient_name,
+        locale=message.locale,
+        data={**PAYLOADS["credit_note.issued"], "corrects_number": None},
+        dedupe_key=message.dedupe_key,
+        attempts=message.attempts,
+        id_community=message.id_community,
+        id_notification=message.id_notification,
+    )
+    with_number = RENDERER.render(message, community_name="C")
+    email = RENDERER.render(without, community_name="C")
+
+    assert "F-2026-00001" in with_number.text and "F-2026-00001" in with_number.html
+    for part in (email.subject, email.html, email.text):
+        assert "None" not in part
+    # Only the sentence naming the invoice went; the rest of the body is intact.
+    assert email.text.count("\n") == with_number.text.count("\n")
+    assert "5.45" in email.text
+
+
+@pytest.mark.parametrize("type_", ["credit_note.issued", "producer_statement.issued"])
+def test_documents_the_member_does_not_pay_never_ask_for_payment(type_: str):
+    """The bug these types exist for: a payout or a credit worded as a bill.
+
+    `invoice.issued` says "It is due on ..."; these two must not, and must say
+    outright that there is nothing to pay.
+    """
+    email = RENDERER.render(_message(type_, locale="en"), community_name="C")
+    for part in (email.subject, email.text):
+        assert "due" not in part.lower()
+    assert "nothing to pay" in email.text or "do not need to pay" in email.text
+
+
 def test_message_id_is_stable_and_derived_from_the_dedupe_key():
     """A redelivered message must carry the same Message-ID so clients collapse it."""
     first = RENDERER.render(_message("invoice.issued", locale="en"), community_name="C")

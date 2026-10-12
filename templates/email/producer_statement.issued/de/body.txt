@@ -1,0 +1,8 @@
+Erzeugerabrechnung {{ data.number }} über {{ data.total }} {{ data.currency }} wurde ausgestellt{% if community_name %} von {{ community_name }}{% endif %}.
+
+Dieser Betrag wird Ihnen von der Gemeinschaft ausgezahlt; Sie müssen nichts bezahlen.
+
+{{ app_url }}/billing
+
+--
+Sie erhalten diese Nachricht, weil sie Ihr OptimCE-Konto betrifft.

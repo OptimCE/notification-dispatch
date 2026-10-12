@@ -101,6 +101,8 @@ EMAIL_TYPES: tuple[str, ...] = (
     "manager_invitation.received",
     "invoice.issued",
     "invoice.overdue",
+    "credit_note.issued",
+    "producer_statement.issued",
     "admin_deadline.due_soon",
     "admin_deadline.missed",
 )

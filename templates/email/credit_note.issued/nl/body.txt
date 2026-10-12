@@ -1,0 +1,8 @@
+Creditnota {{ data.number }} voor {{ data.amount }} {{ data.currency }} is in uw voordeel uitgereikt{% if community_name %} door {{ community_name }}{% endif %}.
+
+{% if data.corrects_number %}Ze annuleert factuur {{ data.corrects_number }}. {% endif %}U hoeft voor dit document niets te betalen.
+
+{{ app_url }}/billing
+
+--
+U ontvangt dit bericht omdat het uw OptimCE-account betreft.
