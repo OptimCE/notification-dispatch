@@ -1,0 +1,1 @@
+Gutschrift {{ data.number }} zu Ihren Gunsten

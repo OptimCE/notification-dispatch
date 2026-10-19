@@ -1,0 +1,8 @@
+Credit note {{ data.number }} for {{ data.amount }} {{ data.currency }} has been issued in your favour{% if community_name %} by {{ community_name }}{% endif %}.
+
+{% if data.corrects_number %}It cancels invoice {{ data.corrects_number }}. {% endif %}You do not need to pay anything for this document.
+
+{{ app_url }}/billing
+
+--
+You are receiving this message because it concerns your OptimCE account.

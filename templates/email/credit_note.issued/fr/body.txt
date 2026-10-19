@@ -1,0 +1,8 @@
+La note de crédit {{ data.number }} d'un montant de {{ data.amount }} {{ data.currency }} a été émise en votre faveur{% if community_name %} par {{ community_name }}{% endif %}.
+
+{% if data.corrects_number %}Elle annule la facture {{ data.corrects_number }}. {% endif %}Ce document ne vous demande aucun paiement.
+
+{{ app_url }}/billing
+
+--
+Vous recevez ce message parce qu'il concerne votre compte OptimCE.

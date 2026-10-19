@@ -28,6 +28,23 @@ PAYLOADS: dict[str, dict[str, Any]] = {
     },
     # billing/api/billing/service.py::sweep_overdue
     "invoice.overdue": {"invoice_id": 8412, "number": "2026-0001"},
+    # billing/api/billing/service.py::_issued_notification. Neither carries a
+    # due_date: nobody pays a credit note, and the community pays the producer.
+    # `amount` is the credited magnitude (the credit note's own total is
+    # negative); `corrects_number` is null if the credited invoice had no number.
+    "credit_note.issued": {
+        "invoice_id": 8413,
+        "number": "NC-2026-00001",
+        "amount": "5.45",
+        "currency": "EUR",
+        "corrects_number": "F-2026-00001",
+    },
+    "producer_statement.issued": {
+        "invoice_id": 8414,
+        "number": "DP-2026-00001",
+        "total": "1.20",
+        "currency": "EUR",
+    },
     # administrative-document/api/administrative_document/service.py::sweep_deadlines
     "admin_deadline.due_soon": {
         "deadline_id": 91,

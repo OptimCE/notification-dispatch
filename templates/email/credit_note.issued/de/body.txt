@@ -1,0 +1,8 @@
+Gutschrift {{ data.number }} über {{ data.amount }} {{ data.currency }} wurde zu Ihren Gunsten ausgestellt{% if community_name %} von {{ community_name }}{% endif %}.
+
+{% if data.corrects_number %}Sie storniert die Rechnung {{ data.corrects_number }}. {% endif %}Für dieses Dokument müssen Sie nichts bezahlen.
+
+{{ app_url }}/billing
+
+--
+Sie erhalten diese Nachricht, weil sie Ihr OptimCE-Konto betrifft.
