@@ -1,0 +1,23 @@
+{% if data.period == "weekly" %}Dit is wat er nog te doen is in uw administratieve procedures.{% else %}Dit is wat er vandaag in uw administratieve procedures veranderde, en wat er nog te doen is.{% endif %}
+
+{% for section in data.communities %}
+== {{ section.name }} ==
+{% if section.news %}
+Vandaag
+{% for item in section.news %}- {% if item.news == "missed" %}Termijn verstreken{% elif item.news == "late" %}Antwoord te laat{% if item.party == 'grd' %} van de DNB{% elif item.party == 'regulator' %} van de regulator{% endif %}{% else %}{% if item.days_left <= 0 %}Vandaag{% elif item.days_left == 1 %}Morgen{% else %}Over {{ item.days_left }} dagen{% endif %}{% endif %}: {{ item.deadline.nl }} — {{ item.procedure.nl }}{% if item.operation %}, {{ item.operation }}{% endif %} (termijn op {{ item.due_display }})
+  {{ app_url }}{{ item.path }}
+{% endfor %}{% endif %}{% if section.overdue %}
+Te laat
+{% for item in section.overdue %}- {{ item.deadline.nl }} — {{ item.procedure.nl }}{% if item.operation %}, {{ item.operation }}{% endif %} (termijn op {{ item.due_display }}){% if item.party != "community" %} —{% if item.party == 'grd' %} van de DNB{% elif item.party == 'regulator' %} van de regulator{% endif %}{% endif %}
+
+  {{ app_url }}{{ item.path }}
+{% endfor %}{% endif %}{% if section.upcoming %}
+In de komende 14 dagen
+{% for item in section.upcoming %}- {% if item.days_left <= 0 %}Vandaag{% elif item.days_left == 1 %}Morgen{% else %}Over {{ item.days_left }} dagen{% endif %}: {{ item.deadline.nl }} — {{ item.procedure.nl }}{% if item.operation %}, {{ item.operation }}{% endif %} (termijn op {{ item.due_display }})
+  {{ app_url }}{{ item.path }}
+{% endfor %}{% endif %}{% endfor %}
+Mijn procedures openen: {{ app_url }}/administrative-document
+
+--
+U ontvangt dit overzicht omdat u een gemeenschap beheert op OptimCE. U kunt het dagelijks, wekelijks of helemaal niet ontvangen.
+Uw meldingsvoorkeuren beheren: {{ preferences_url }}

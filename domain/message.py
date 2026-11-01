@@ -105,6 +105,9 @@ EMAIL_TYPES: tuple[str, ...] = (
     "producer_statement.issued",
     "admin_deadline.due_soon",
     "admin_deadline.missed",
+    # The administrative annexe's daily summary: one per manager per day,
+    # across communities (its worker/digest.py builds `data`).
+    "admin_digest.summary",
 )
 
 #: Rendered when `type` has no template of its own.

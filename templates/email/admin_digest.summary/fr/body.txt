@@ -1,0 +1,23 @@
+{% if data.period == "weekly" %}Voici ce qui reste à faire dans vos démarches administratives.{% else %}Voici ce qui a bougé aujourd'hui dans vos démarches administratives, et ce qui reste à faire.{% endif %}
+
+{% for section in data.communities %}
+== {{ section.name }} ==
+{% if section.news %}
+Aujourd'hui
+{% for item in section.news %}- {% if item.news == "missed" %}Échéance dépassée{% elif item.news == "late" %}Réponse attendue en retard{% if item.party == 'grd' %} du GRD{% elif item.party == 'regulator' %} du régulateur{% endif %}{% else %}{% if item.days_left <= 0 %}Aujourd'hui{% elif item.days_left == 1 %}Demain{% else %}Dans {{ item.days_left }} jours{% endif %}{% endif %} : {{ item.deadline.fr }} — {{ item.procedure.fr }}{% if item.operation %}, {{ item.operation }}{% endif %} (échéance le {{ item.due_display }})
+  {{ app_url }}{{ item.path }}
+{% endfor %}{% endif %}{% if section.overdue %}
+En retard
+{% for item in section.overdue %}- {{ item.deadline.fr }} — {{ item.procedure.fr }}{% if item.operation %}, {{ item.operation }}{% endif %} (échéance le {{ item.due_display }}){% if item.party != "community" %} —{% if item.party == 'grd' %} du GRD{% elif item.party == 'regulator' %} du régulateur{% endif %}{% endif %}
+
+  {{ app_url }}{{ item.path }}
+{% endfor %}{% endif %}{% if section.upcoming %}
+Dans les 14 prochains jours
+{% for item in section.upcoming %}- {% if item.days_left <= 0 %}Aujourd'hui{% elif item.days_left == 1 %}Demain{% else %}Dans {{ item.days_left }} jours{% endif %} : {{ item.deadline.fr }} — {{ item.procedure.fr }}{% if item.operation %}, {{ item.operation }}{% endif %} (échéance le {{ item.due_display }})
+  {{ app_url }}{{ item.path }}
+{% endfor %}{% endif %}{% endfor %}
+Ouvrir mes démarches : {{ app_url }}/administrative-document
+
+--
+Vous recevez ce récapitulatif parce que vous gérez une communauté sur OptimCE. Vous pouvez le recevoir chaque jour, chaque semaine ou plus du tout.
+Gérer vos préférences de notification : {{ preferences_url }}

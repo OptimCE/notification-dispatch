@@ -1,0 +1,29 @@
+{% extends "_layout.html" %}
+{% block content %}
+<p style="margin:0 0 14px 0;">{% if data.period == "weekly" %}Das bleibt in Ihren Verwaltungsverfahren zu tun.{% else %}Das hat sich heute in Ihren Verwaltungsverfahren geändert, und das bleibt zu tun.{% endif %}</p>
+{% for section in data.communities %}
+<h3 style="margin:22px 0 4px 0;font-size:16px;color:#1f2933;">{{ section.name }}</h3>
+{% if section.news %}
+<p style="margin:10px 0 6px 0;font-size:14px;font-weight:600;color:#3e4c59;">Heute</p>
+<ul style="margin:0 0 14px 18px;padding:0;">
+{% for item in section.news %}<li style="margin:0 0 6px 0;">{% if item.news == "missed" %}Frist überschritten{% elif item.news == "late" %}Antwort überfällig{% if item.party == 'grd' %} vom VNB{% elif item.party == 'regulator' %} von der Regulierungsbehörde{% endif %}{% else %}{% if item.days_left <= 0 %}Heute{% elif item.days_left == 1 %}Morgen{% else %}In {{ item.days_left }} Tagen{% endif %}{% endif %}: <a href="{{ app_url }}{{ item.path }}" style="color:#0f766e;">{{ item.deadline.de }}</a> — {{ item.procedure.de }}{% if item.operation %}, {{ item.operation }}{% endif %} (fällig am {{ item.due_display }})</li>
+{% endfor %}</ul>
+{% endif %}
+{% if section.overdue %}
+<p style="margin:10px 0 6px 0;font-size:14px;font-weight:600;color:#3e4c59;">Überfällig</p>
+<ul style="margin:0 0 14px 18px;padding:0;">
+{% for item in section.overdue %}<li style="margin:0 0 6px 0;"><a href="{{ app_url }}{{ item.path }}" style="color:#0f766e;">{{ item.deadline.de }}</a> — {{ item.procedure.de }}{% if item.operation %}, {{ item.operation }}{% endif %} (fällig am {{ item.due_display }}){% if item.party != "community" %} —{% if item.party == 'grd' %} vom VNB{% elif item.party == 'regulator' %} von der Regulierungsbehörde{% endif %}{% endif %}</li>
+{% endfor %}</ul>
+{% endif %}
+{% if section.upcoming %}
+<p style="margin:10px 0 6px 0;font-size:14px;font-weight:600;color:#3e4c59;">In den nächsten 14 Tagen</p>
+<ul style="margin:0 0 14px 18px;padding:0;">
+{% for item in section.upcoming %}<li style="margin:0 0 6px 0;">{% if item.days_left <= 0 %}Heute{% elif item.days_left == 1 %}Morgen{% else %}In {{ item.days_left }} Tagen{% endif %}: <a href="{{ app_url }}{{ item.path }}" style="color:#0f766e;">{{ item.deadline.de }}</a> — {{ item.procedure.de }}{% if item.operation %}, {{ item.operation }}{% endif %} (fällig am {{ item.due_display }})</li>
+{% endfor %}</ul>
+{% endif %}
+{% endfor %}
+<p style="margin:22px 0 6px 0;"><a href="{{ app_url }}/administrative-document" style="display:inline-block;padding:10px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;">Meine Verfahren öffnen</a></p>
+{% endblock %}
+{% block footer %}
+Sie erhalten diese Übersicht, weil Sie eine Gemeinschaft auf OptimCE verwalten. Sie können sie täglich, wöchentlich oder gar nicht erhalten.<br><a href="{{ preferences_url }}" style="color:#0f766e;">Ihre Benachrichtigungseinstellungen verwalten</a>
+{% endblock %}

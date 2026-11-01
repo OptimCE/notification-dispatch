@@ -1,0 +1,29 @@
+{% extends "_layout.html" %}
+{% block content %}
+<p style="margin:0 0 14px 0;">{% if data.period == "weekly" %}Here is what is left to do in your administrative procedures.{% else %}Here is what moved today in your administrative procedures, and what is left to do.{% endif %}</p>
+{% for section in data.communities %}
+<h3 style="margin:22px 0 4px 0;font-size:16px;color:#1f2933;">{{ section.name }}</h3>
+{% if section.news %}
+<p style="margin:10px 0 6px 0;font-size:14px;font-weight:600;color:#3e4c59;">Today</p>
+<ul style="margin:0 0 14px 18px;padding:0;">
+{% for item in section.news %}<li style="margin:0 0 6px 0;">{% if item.news == "missed" %}Deadline missed{% elif item.news == "late" %}Answer overdue{% if item.party == 'grd' %} from the DSO{% elif item.party == 'regulator' %} from the regulator{% endif %}{% else %}{% if item.days_left <= 0 %}Today{% elif item.days_left == 1 %}Tomorrow{% else %}In {{ item.days_left }} days{% endif %}{% endif %}: <a href="{{ app_url }}{{ item.path }}" style="color:#0f766e;">{{ item.deadline.en }}</a> — {{ item.procedure.en }}{% if item.operation %}, {{ item.operation }}{% endif %} (due on {{ item.due_display }})</li>
+{% endfor %}</ul>
+{% endif %}
+{% if section.overdue %}
+<p style="margin:10px 0 6px 0;font-size:14px;font-weight:600;color:#3e4c59;">Overdue</p>
+<ul style="margin:0 0 14px 18px;padding:0;">
+{% for item in section.overdue %}<li style="margin:0 0 6px 0;"><a href="{{ app_url }}{{ item.path }}" style="color:#0f766e;">{{ item.deadline.en }}</a> — {{ item.procedure.en }}{% if item.operation %}, {{ item.operation }}{% endif %} (due on {{ item.due_display }}){% if item.party != "community" %} —{% if item.party == 'grd' %} from the DSO{% elif item.party == 'regulator' %} from the regulator{% endif %}{% endif %}</li>
+{% endfor %}</ul>
+{% endif %}
+{% if section.upcoming %}
+<p style="margin:10px 0 6px 0;font-size:14px;font-weight:600;color:#3e4c59;">In the next 14 days</p>
+<ul style="margin:0 0 14px 18px;padding:0;">
+{% for item in section.upcoming %}<li style="margin:0 0 6px 0;">{% if item.days_left <= 0 %}Today{% elif item.days_left == 1 %}Tomorrow{% else %}In {{ item.days_left }} days{% endif %}: <a href="{{ app_url }}{{ item.path }}" style="color:#0f766e;">{{ item.deadline.en }}</a> — {{ item.procedure.en }}{% if item.operation %}, {{ item.operation }}{% endif %} (due on {{ item.due_display }})</li>
+{% endfor %}</ul>
+{% endif %}
+{% endfor %}
+<p style="margin:22px 0 6px 0;"><a href="{{ app_url }}/administrative-document" style="display:inline-block;padding:10px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;">Open my procedures</a></p>
+{% endblock %}
+{% block footer %}
+You receive this summary because you manage a community on OptimCE. You can get it daily, weekly or not at all.<br><a href="{{ preferences_url }}" style="color:#0f766e;">Manage your notification preferences</a>
+{% endblock %}
