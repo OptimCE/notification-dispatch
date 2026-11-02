@@ -251,3 +251,45 @@ def test_community_name_is_optional_everywhere():
         email = RENDERER.render(_message(type_, locale="en"), community_name=None)
         assert "None" not in email.subject
         assert ">None<" not in email.html
+
+
+# (in force, answer recorded, mail to qualify), as the summary's text says them.
+_DIGEST_PROCEDURE_NEWS = {
+    "fr": (
+        "En vigueur depuis le 02/11/2026\u00a0: Modification du partage, Op Centre",
+        "Réponse enregistrée\u00a0: Accord — P, Op Sud",
+        "Courrier reçu à qualifier — P",
+    ),
+    "en": (
+        "In effect since 02/11/2026: Sharing change, Op Centre",
+        "Answer recorded: Approval — P, Op Sud",
+        "Received mail to qualify — P",
+    ),
+    "nl": (
+        "In werking sinds 02/11/2026: Wijziging van de deling, Op Centre",
+        "Antwoord geregistreerd: Goedkeuring — P, Op Sud",
+        "Ontvangen post te kwalificeren — P",
+    ),
+    "de": (
+        "In Kraft seit 02/11/2026: Änderung der Teilung, Op Centre",
+        "Antwort erfasst: Zustimmung — P, Op Sud",
+        "Empfangene Post zu qualifizieren — P",
+    ),
+}
+
+
+@pytest.mark.parametrize("locale", LOCALES)
+def test_the_summary_tells_a_procedure_in_force_and_the_answers(locale: str):
+    """A day's news is not only the deadline pass's: a procedure in force, an
+    answer recorded and a mail to qualify each get their line, with the
+    procedure's link on the next one (`trim_blocks` eats the newline after a
+    closing block tag)."""
+    email = RENDERER.render(_message("admin_digest.summary", locale=locale), community_name="C")
+    lines = email.text.split("\n")
+    for said, dossier in zip(_DIGEST_PROCEDURE_NEWS[locale], (7, 9, 8), strict=True):
+        index = lines.index(f"- {said}")
+        assert lines[index + 1] == (
+            f"  https://app.optimce.test/administrative-document/procedures/{dossier}"
+        )
+        # The HTML links the procedure's label instead.
+        assert said.split(" — ")[0].split(", ")[0].split(":")[0] in email.html

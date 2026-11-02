@@ -4,7 +4,8 @@
 == {{ section.name }} ==
 {% if section.news %}
 Today
-{% for item in section.news %}- {% if item.news == "missed" %}Deadline missed{% elif item.news == "late" %}Answer overdue{% if item.party == 'grd' %} from the DSO{% elif item.party == 'regulator' %} from the regulator{% endif %}{% else %}{% if item.days_left <= 0 %}Today{% elif item.days_left == 1 %}Tomorrow{% else %}In {{ item.days_left }} days{% endif %}{% endif %}: {{ item.deadline.en }} — {{ item.procedure.en }}{% if item.operation %}, {{ item.operation }}{% endif %} (due on {{ item.due_display }})
+{% for item in section.news %}- {% if item.news == "in_force" %}In effect since {{ item.effective_display }}: {{ item.procedure.en }}{% if item.operation %}, {{ item.operation }}{% endif %}{% elif item.news == "answer" %}{% if item.response %}Answer recorded: {{ item.response.en }}{% else %}Received mail to qualify{% endif %} — {{ item.procedure.en }}{% if item.operation %}, {{ item.operation }}{% endif %}{% else %}{% if item.news == "missed" %}Deadline missed{% elif item.news == "late" %}Answer overdue{% if item.party == 'grd' %} from the DSO{% elif item.party == 'regulator' %} from the regulator{% endif %}{% else %}{% if item.days_left <= 0 %}Today{% elif item.days_left == 1 %}Tomorrow{% else %}In {{ item.days_left }} days{% endif %}{% endif %}: {{ item.deadline.en }} — {{ item.procedure.en }}{% if item.operation %}, {{ item.operation }}{% endif %} (due on {{ item.due_display }}){% endif %}
+
   {{ app_url }}{{ item.path }}
 {% endfor %}{% endif %}{% if section.overdue %}
 Overdue

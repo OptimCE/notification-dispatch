@@ -4,7 +4,8 @@
 == {{ section.name }} ==
 {% if section.news %}
 Heute
-{% for item in section.news %}- {% if item.news == "missed" %}Frist überschritten{% elif item.news == "late" %}Antwort überfällig{% if item.party == 'grd' %} vom VNB{% elif item.party == 'regulator' %} von der Regulierungsbehörde{% endif %}{% else %}{% if item.days_left <= 0 %}Heute{% elif item.days_left == 1 %}Morgen{% else %}In {{ item.days_left }} Tagen{% endif %}{% endif %}: {{ item.deadline.de }} — {{ item.procedure.de }}{% if item.operation %}, {{ item.operation }}{% endif %} (fällig am {{ item.due_display }})
+{% for item in section.news %}- {% if item.news == "in_force" %}In Kraft seit {{ item.effective_display }}: {{ item.procedure.de }}{% if item.operation %}, {{ item.operation }}{% endif %}{% elif item.news == "answer" %}{% if item.response %}Antwort erfasst: {{ item.response.de }}{% else %}Empfangene Post zu qualifizieren{% endif %} — {{ item.procedure.de }}{% if item.operation %}, {{ item.operation }}{% endif %}{% else %}{% if item.news == "missed" %}Frist überschritten{% elif item.news == "late" %}Antwort überfällig{% if item.party == 'grd' %} vom VNB{% elif item.party == 'regulator' %} von der Regulierungsbehörde{% endif %}{% else %}{% if item.days_left <= 0 %}Heute{% elif item.days_left == 1 %}Morgen{% else %}In {{ item.days_left }} Tagen{% endif %}{% endif %}: {{ item.deadline.de }} — {{ item.procedure.de }}{% if item.operation %}, {{ item.operation }}{% endif %} (fällig am {{ item.due_display }}){% endif %}
+
   {{ app_url }}{{ item.path }}
 {% endfor %}{% endif %}{% if section.overdue %}
 Überfällig

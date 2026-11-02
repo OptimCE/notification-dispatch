@@ -4,7 +4,8 @@
 == {{ section.name }} ==
 {% if section.news %}
 Aujourd'hui
-{% for item in section.news %}- {% if item.news == "missed" %}Échéance dépassée{% elif item.news == "late" %}Réponse attendue en retard{% if item.party == 'grd' %} du GRD{% elif item.party == 'regulator' %} du régulateur{% endif %}{% else %}{% if item.days_left <= 0 %}Aujourd'hui{% elif item.days_left == 1 %}Demain{% else %}Dans {{ item.days_left }} jours{% endif %}{% endif %} : {{ item.deadline.fr }} — {{ item.procedure.fr }}{% if item.operation %}, {{ item.operation }}{% endif %} (échéance le {{ item.due_display }})
+{% for item in section.news %}- {% if item.news == "in_force" %}En vigueur depuis le {{ item.effective_display }} : {{ item.procedure.fr }}{% if item.operation %}, {{ item.operation }}{% endif %}{% elif item.news == "answer" %}{% if item.response %}Réponse enregistrée : {{ item.response.fr }}{% else %}Courrier reçu à qualifier{% endif %} — {{ item.procedure.fr }}{% if item.operation %}, {{ item.operation }}{% endif %}{% else %}{% if item.news == "missed" %}Échéance dépassée{% elif item.news == "late" %}Réponse attendue en retard{% if item.party == 'grd' %} du GRD{% elif item.party == 'regulator' %} du régulateur{% endif %}{% else %}{% if item.days_left <= 0 %}Aujourd'hui{% elif item.days_left == 1 %}Demain{% else %}Dans {{ item.days_left }} jours{% endif %}{% endif %} : {{ item.deadline.fr }} — {{ item.procedure.fr }}{% if item.operation %}, {{ item.operation }}{% endif %} (échéance le {{ item.due_display }}){% endif %}
+
   {{ app_url }}{{ item.path }}
 {% endfor %}{% endif %}{% if section.overdue %}
 En retard

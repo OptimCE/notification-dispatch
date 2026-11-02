@@ -60,13 +60,15 @@ PAYLOADS: dict[str, dict[str, Any]] = {
         "due_date": "2026-08-14",
     },
     # administrative-document worker/digest.py: the day's summary, every
-    # section and item kind a template may meet (news of the three kinds,
-    # overdue of the community and of a third party, an item with no operation).
+    # section and item kind a template may meet (news of the deadline pass's
+    # three kinds, a procedure in force, an answer recorded and a mail to
+    # qualify; overdue of the community and of a third party; an item with no
+    # operation).
     "admin_digest.summary": {
         "as_of": "2026-11-02",
         "as_of_display": "02/11/2026",
         "period": "daily",
-        "counts": {"news": 3, "overdue": 2, "upcoming": 2},
+        "counts": {"news": 6, "overdue": 2, "upcoming": 2},
         "communities": [
             {
                 "id": 10,
@@ -123,6 +125,46 @@ PAYLOADS: dict[str, dict[str, Any]] = {
                         "party": "grd",
                         "news": "late",
                         "rung": None,
+                    },
+                    {
+                        "dossier_id": 7,
+                        "path": "/administrative-document/procedures/7",
+                        "procedure": {
+                            "fr": "Modification du partage",
+                            "en": "Sharing change",
+                            "nl": "Wijziging van de deling",
+                            "de": "Änderung der Teilung",
+                        },
+                        "operation": "Op Centre",
+                        "news": "in_force",
+                        "effective_date": "2026-11-02",
+                        "effective_display": "02/11/2026",
+                        "response": None,
+                    },
+                    {
+                        "dossier_id": 9,
+                        "path": "/administrative-document/procedures/9",
+                        "procedure": {"fr": "P", "en": "P", "nl": "P", "de": "P"},
+                        "operation": "Op Sud",
+                        "news": "answer",
+                        "effective_date": None,
+                        "effective_display": None,
+                        "response": {
+                            "fr": "Accord",
+                            "en": "Approval",
+                            "nl": "Goedkeuring",
+                            "de": "Zustimmung",
+                        },
+                    },
+                    {
+                        "dossier_id": 8,
+                        "path": "/administrative-document/procedures/8",
+                        "procedure": {"fr": "P", "en": "P", "nl": "P", "de": "P"},
+                        "operation": None,
+                        "news": "answer",
+                        "effective_date": None,
+                        "effective_display": None,
+                        "response": None,
                     },
                 ],
                 "overdue": [
