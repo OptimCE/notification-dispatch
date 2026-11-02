@@ -1,1 +1,1 @@
-{% if data.period == "weekly" %}Your administrative week ({{ data.as_of_display }}){% else %}Your administrative summary for {{ data.as_of_display }}{% endif %}
+Your administrative summary for {{ data.as_of_display }}

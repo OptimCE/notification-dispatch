@@ -278,6 +278,50 @@ _DIGEST_PROCEDURE_NEWS = {
 }
 
 
+# Each community's period, its horizon, and why the recipient gets it (an
+# admin chose them; they may stop it in their profile).
+_DIGEST_PERIOD = {
+    "fr": (
+        "Votre récapitulatif administratif du 02/11/2026",
+        "Depuis le 26/10/2026",
+        "D'ici le 16/11/2026",
+        "un administrateur de votre communauté vous a choisi",
+    ),
+    "en": (
+        "Your administrative summary for 02/11/2026",
+        "Since 26/10/2026",
+        "By 16/11/2026",
+        "an administrator of your community chose you",
+    ),
+    "nl": (
+        "Uw administratief overzicht van 02/11/2026",
+        "Sinds 26/10/2026",
+        "Tot 16/11/2026",
+        "een beheerder van uw gemeenschap u als ontvanger heeft gekozen",
+    ),
+    "de": (
+        "Ihre Verwaltungsübersicht vom 02/11/2026",
+        "Seit dem 26/10/2026",
+        "Bis zum 16/11/2026",
+        "ein Administrator Ihrer Gemeinschaft Sie als Empfänger ausgewählt hat",
+    ),
+}
+
+
+@pytest.mark.parametrize("locale", LOCALES)
+def test_the_summary_says_its_period_and_who_chose_it(locale: str):
+    subject, since, until, chosen = _DIGEST_PERIOD[locale]
+    email = RENDERER.render(_message("admin_digest.summary", locale=locale), community_name="C")
+    assert email.subject == subject
+    lines = email.text.split("\n")
+    assert since in lines
+    assert until in lines
+    for part in (email.text, email.html):
+        assert chosen in part
+        # The way out: the profile's notification preferences.
+        assert "https://app.optimce.test/users" in part
+
+
 @pytest.mark.parametrize("locale", LOCALES)
 def test_the_summary_tells_a_procedure_in_force_and_the_answers(locale: str):
     """A day's news is not only the deadline pass's: a procedure in force, an

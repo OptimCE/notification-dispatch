@@ -59,45 +59,24 @@ PAYLOADS: dict[str, dict[str, Any]] = {
         "deadline_type": "COMPLETENESS",
         "due_date": "2026-08-14",
     },
-    # administrative-document worker/digest.py: the day's summary, every
-    # section and item kind a template may meet (news of the deadline pass's
-    # three kinds, a procedure in force, an answer recorded and a mail to
-    # qualify; overdue of the community and of a third party; an item with no
-    # operation).
+    # administrative-document worker/digest.py: a community's summary, every
+    # section and item kind a template may meet (news of its period: a
+    # deadline missed, a third party late, a procedure in force, an answer
+    # recorded and a mail to qualify; overdue of the community and of a third
+    # party; an item with no operation).
     "admin_digest.summary": {
         "as_of": "2026-11-02",
         "as_of_display": "02/11/2026",
-        "period": "daily",
-        "counts": {"news": 6, "overdue": 2, "upcoming": 2},
+        "counts": {"news": 5, "overdue": 2, "upcoming": 2},
         "communities": [
             {
                 "id": 10,
                 "name": "CER Exemple",
+                "since": "2026-10-26T05:00:12+00:00",
+                "since_display": "26/10/2026",
+                "until": "2026-11-16",
+                "until_display": "16/11/2026",
                 "news": [
-                    {
-                        "deadline_id": 91,
-                        "dossier_id": 7,
-                        "path": "/administrative-document/procedures/7",
-                        "procedure": {
-                            "fr": "Modification du partage",
-                            "en": "Sharing change",
-                            "nl": "Wijziging van de deling",
-                            "de": "Änderung der Teilung",
-                        },
-                        "deadline": {
-                            "fr": "Renvoyer l'avenant signé",
-                            "en": "Return the signed amendment",
-                            "nl": "Het ondertekende aanhangsel terugsturen",
-                            "de": "Den unterzeichneten Nachtrag zurücksenden",
-                        },
-                        "operation": "Op Centre",
-                        "due_date": "2026-11-09",
-                        "due_display": "09/11/2026",
-                        "days_left": 7,
-                        "party": "community",
-                        "news": "reminder",
-                        "rung": 7,
-                    },
                     {
                         "deadline_id": 92,
                         "dossier_id": 8,
@@ -110,7 +89,6 @@ PAYLOADS: dict[str, dict[str, Any]] = {
                         "days_left": -1,
                         "party": "community",
                         "news": "missed",
-                        "rung": None,
                     },
                     {
                         "deadline_id": 93,
@@ -124,7 +102,6 @@ PAYLOADS: dict[str, dict[str, Any]] = {
                         "days_left": -3,
                         "party": "grd",
                         "news": "late",
-                        "rung": None,
                     },
                     {
                         "dossier_id": 7,

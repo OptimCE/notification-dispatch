@@ -1,1 +1,1 @@
-{% if data.period == "weekly" %}Uw administratieve week ({{ data.as_of_display }}){% else %}Uw administratief overzicht van {{ data.as_of_display }}{% endif %}
+Uw administratief overzicht van {{ data.as_of_display }}
