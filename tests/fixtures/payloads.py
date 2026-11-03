@@ -64,6 +64,36 @@ PAYLOADS: dict[str, dict[str, Any]] = {
     # deadline missed, a third party late, a procedure in force, an answer
     # recorded and a mail to qualify; overdue of the community and of a third
     # party; an item with no operation).
+    # signature/service/notify.py: the base every signature type carries
+    # (request_id, title, community) plus its own keys.
+    "signature.requested": {
+        "request_id": "7f3c0b2e-1111-4a2b-9c3d-000000000001",
+        "title": "Déclaration sur l'honneur — annexe 8",
+        "community": "Les Coteaux",
+        "signer_id": "a1b2c3d4-2222-4a2b-9c3d-000000000002",
+        "path": "/signatures/7f3c0b2e-1111-4a2b-9c3d-000000000001/signers/a1b2c3d4-2222-4a2b-9c3d-000000000002",
+    },
+    "signature.reminder": {
+        "request_id": "7f3c0b2e-1111-4a2b-9c3d-000000000001",
+        "title": "Déclaration sur l'honneur — annexe 8",
+        "community": "Les Coteaux",
+        "signer_id": "a1b2c3d4-2222-4a2b-9c3d-000000000002",
+        "path": "/signatures/7f3c0b2e-1111-4a2b-9c3d-000000000001/signers/a1b2c3d4-2222-4a2b-9c3d-000000000002",
+    },
+    "signature.declined": {
+        "request_id": "7f3c0b2e-1111-4a2b-9c3d-000000000001",
+        "title": "Déclaration sur l'honneur — annexe 8",
+        "community": "Les Coteaux",
+        "signer": "Alice Martin",
+        "reason": "L'EAN indiqué n'est pas le mien",
+        "path": "/signatures/requests/7f3c0b2e-1111-4a2b-9c3d-000000000001",
+    },
+    "signature.completed": {
+        "request_id": "7f3c0b2e-1111-4a2b-9c3d-000000000001",
+        "title": "Déclaration sur l'honneur — annexe 8",
+        "community": "Les Coteaux",
+        "path": "/signatures/requests/7f3c0b2e-1111-4a2b-9c3d-000000000001",
+    },
     "admin_digest.summary": {
         "as_of": "2026-11-02",
         "as_of_display": "02/11/2026",

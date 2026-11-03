@@ -108,6 +108,12 @@ EMAIL_TYPES: tuple[str, ...] = (
     # The administrative annexe's daily summary: one per manager per day,
     # across communities (its worker/digest.py builds `data`).
     "admin_digest.summary",
+    # The signature annexe (service/notify.py builds `data`). signature.signed
+    # is in-app only, so it has no template.
+    "signature.requested",
+    "signature.reminder",
+    "signature.declined",
+    "signature.completed",
 )
 
 #: Rendered when `type` has no template of its own.

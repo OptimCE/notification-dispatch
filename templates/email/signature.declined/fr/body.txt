@@ -1,0 +1,8 @@
+{{ data.signer }} a refusé de signer « {{ data.title }} »{% if data.community %} ({{ data.community }}){% endif %}. La demande de signature est close.
+
+Motif donné : {{ data.reason }}
+
+{{ app_url }}{{ data.path }}
+
+--
+Vous recevez ce message parce qu'il concerne votre compte OptimCE.

@@ -1,0 +1,9 @@
+„{{ data.title }}“ wurde von allen Parteien unterzeichnet{% if data.community %} ({{ data.community }}){% endif %}.
+
+Das unterzeichnete Dokument und sein Nachweisbericht sind in OptimCE verfügbar.
+
+{{ app_url }}{{ data.path }}
+
+--
+Sie erhalten diese Nachricht, weil sie Ihr OptimCE-Konto betrifft.
+Ihre Benachrichtigungseinstellungen verwalten: {{ preferences_url }}

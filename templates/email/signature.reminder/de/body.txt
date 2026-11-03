@@ -1,0 +1,6 @@
+Zur Erinnerung: „{{ data.title }}“ wartet noch auf Ihre Unterschrift{% if data.community %} ({{ data.community }}){% endif %}.
+
+{{ app_url }}{{ data.path }}
+
+--
+Sie erhalten diese Nachricht, weil sie Ihr OptimCE-Konto betrifft.

@@ -1,0 +1,9 @@
+{% extends "_layout.html" %}
+{% block content %}
+<p style="margin:0 0 14px 0;">“<strong>{{ data.title }}</strong>” is door alle partijen ondertekend{% if data.community %} ({{ data.community }}){% endif %}.</p>
+<p style="margin:0 0 14px 0;">Het ondertekende document en het bewijsrapport staan in OptimCE.</p>
+<p style="margin:22px 0 6px 0;"><a href="{{ app_url }}{{ data.path }}" style="display:inline-block;padding:10px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;">Het ondertekende document downloaden</a></p>
+{% endblock %}
+{% block footer %}
+U ontvangt dit bericht omdat het uw OptimCE-account betreft.<br><a href="{{ preferences_url }}" style="color:#0f766e;">Uw meldingsvoorkeuren beheren</a>
+{% endblock %}

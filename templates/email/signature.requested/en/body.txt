@@ -1,0 +1,8 @@
+{% if data.community %}The community {{ data.community }} {% else %}Your community {% endif %}asks you to sign “{{ data.title }}”.
+
+Open the document in OptimCE, read it, then sign it electronically. You will be asked to sign in again to sign.
+
+{{ app_url }}{{ data.path }}
+
+--
+You are receiving this message because it concerns your OptimCE account.

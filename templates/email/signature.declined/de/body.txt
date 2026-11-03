@@ -1,0 +1,8 @@
+{{ data.signer }} hat abgelehnt, „{{ data.title }}“ zu unterzeichnen{% if data.community %} ({{ data.community }}){% endif %}. Die Signaturanfrage ist abgeschlossen.
+
+Angegebener Grund: {{ data.reason }}
+
+{{ app_url }}{{ data.path }}
+
+--
+Sie erhalten diese Nachricht, weil sie Ihr OptimCE-Konto betrifft.

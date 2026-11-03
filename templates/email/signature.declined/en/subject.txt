@@ -1,0 +1,1 @@
+Signature declined: {{ data.title }}

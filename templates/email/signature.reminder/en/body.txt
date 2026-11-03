@@ -1,0 +1,6 @@
+As a reminder, “{{ data.title }}” is still waiting for your signature{% if data.community %} ({{ data.community }}){% endif %}.
+
+{{ app_url }}{{ data.path }}
+
+--
+You are receiving this message because it concerns your OptimCE account.
