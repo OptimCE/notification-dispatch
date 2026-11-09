@@ -71,14 +71,20 @@ PAYLOADS: dict[str, dict[str, Any]] = {
         "title": "Déclaration sur l'honneur — annexe 8",
         "community": "Les Coteaux",
         "signer_id": "a1b2c3d4-2222-4a2b-9c3d-000000000002",
-        "path": "/signatures/7f3c0b2e-1111-4a2b-9c3d-000000000001/signers/a1b2c3d4-2222-4a2b-9c3d-000000000002",
+        "path": (
+            "/signatures/7f3c0b2e-1111-4a2b-9c3d-000000000001"
+            "/signers/a1b2c3d4-2222-4a2b-9c3d-000000000002"
+        ),
     },
     "signature.reminder": {
         "request_id": "7f3c0b2e-1111-4a2b-9c3d-000000000001",
         "title": "Déclaration sur l'honneur — annexe 8",
         "community": "Les Coteaux",
         "signer_id": "a1b2c3d4-2222-4a2b-9c3d-000000000002",
-        "path": "/signatures/7f3c0b2e-1111-4a2b-9c3d-000000000001/signers/a1b2c3d4-2222-4a2b-9c3d-000000000002",
+        "path": (
+            "/signatures/7f3c0b2e-1111-4a2b-9c3d-000000000001"
+            "/signers/a1b2c3d4-2222-4a2b-9c3d-000000000002"
+        ),
     },
     "signature.declined": {
         "request_id": "7f3c0b2e-1111-4a2b-9c3d-000000000001",
