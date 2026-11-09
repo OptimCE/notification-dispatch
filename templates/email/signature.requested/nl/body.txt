@@ -1,0 +1,8 @@
+{% if data.community %}De gemeenschap {{ data.community }} {% else %}Uw gemeenschap {% endif %}vraagt u “{{ data.title }}” te ondertekenen.
+
+Open het document in OptimCE, lees het en onderteken het elektronisch. Om te ondertekenen wordt u gevraagd opnieuw aan te melden.
+
+{{ app_url }}{{ data.path }}
+
+--
+U ontvangt dit bericht omdat het uw OptimCE-account betreft.

@@ -1,0 +1,29 @@
+{% extends "_layout.html" %}
+{% block content %}
+<p style="margin:0 0 14px 0;">Dit is wat er sinds het vorige overzicht in uw administratieve procedures veranderde, en wat er nog te doen is.</p>
+{% for section in data.communities %}
+<h3 style="margin:22px 0 4px 0;font-size:16px;color:#1f2933;">{{ section.name }}</h3>
+{% if section.news %}
+<p style="margin:10px 0 6px 0;font-size:14px;font-weight:600;color:#3e4c59;">Sinds {{ section.since_display }}</p>
+<ul style="margin:0 0 14px 18px;padding:0;">
+{% for item in section.news %}<li style="margin:0 0 6px 0;">{% if item.news == "in_force" %}In werking sinds {{ item.effective_display }}: <a href="{{ app_url }}{{ item.path }}" style="color:#0f766e;">{{ item.procedure.nl }}</a>{% if item.operation %}, {{ item.operation }}{% endif %}{% elif item.news == "answer" %}{% if item.response %}Antwoord geregistreerd: {{ item.response.nl }}{% else %}Ontvangen post te kwalificeren{% endif %} — <a href="{{ app_url }}{{ item.path }}" style="color:#0f766e;">{{ item.procedure.nl }}</a>{% if item.operation %}, {{ item.operation }}{% endif %}{% else %}{% if item.news == "missed" %}Termijn verstreken{% elif item.news == "late" %}Antwoord te laat{% if item.party == 'grd' %} van de DNB{% elif item.party == 'regulator' %} van de regulator{% endif %}{% endif %}: <a href="{{ app_url }}{{ item.path }}" style="color:#0f766e;">{{ item.deadline.nl }}</a> — {{ item.procedure.nl }}{% if item.operation %}, {{ item.operation }}{% endif %} (termijn op {{ item.due_display }}){% endif %}</li>
+{% endfor %}</ul>
+{% endif %}
+{% if section.overdue %}
+<p style="margin:10px 0 6px 0;font-size:14px;font-weight:600;color:#3e4c59;">Te laat</p>
+<ul style="margin:0 0 14px 18px;padding:0;">
+{% for item in section.overdue %}<li style="margin:0 0 6px 0;"><a href="{{ app_url }}{{ item.path }}" style="color:#0f766e;">{{ item.deadline.nl }}</a> — {{ item.procedure.nl }}{% if item.operation %}, {{ item.operation }}{% endif %} (termijn op {{ item.due_display }}){% if item.party != "community" %} —{% if item.party == 'grd' %} van de DNB{% elif item.party == 'regulator' %} van de regulator{% endif %}{% endif %}</li>
+{% endfor %}</ul>
+{% endif %}
+{% if section.upcoming %}
+<p style="margin:10px 0 6px 0;font-size:14px;font-weight:600;color:#3e4c59;">Tot {{ section.until_display }}</p>
+<ul style="margin:0 0 14px 18px;padding:0;">
+{% for item in section.upcoming %}<li style="margin:0 0 6px 0;">{% if item.days_left <= 0 %}Vandaag{% elif item.days_left == 1 %}Morgen{% else %}Over {{ item.days_left }} dagen{% endif %}: <a href="{{ app_url }}{{ item.path }}" style="color:#0f766e;">{{ item.deadline.nl }}</a> — {{ item.procedure.nl }}{% if item.operation %}, {{ item.operation }}{% endif %} (termijn op {{ item.due_display }})</li>
+{% endfor %}</ul>
+{% endif %}
+{% endfor %}
+<p style="margin:22px 0 6px 0;"><a href="{{ app_url }}/administrative-document" style="display:inline-block;padding:10px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;">Mijn procedures openen</a></p>
+{% endblock %}
+{% block footer %}
+U ontvangt dit overzicht omdat een beheerder van uw gemeenschap u als ontvanger heeft gekozen. Wilt u het niet meer ontvangen, schakel het dan uit in uw meldingsvoorkeuren.<br><a href="{{ preferences_url }}" style="color:#0f766e;">Uw meldingsvoorkeuren beheren</a>
+{% endblock %}

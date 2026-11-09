@@ -1,0 +1,9 @@
+“{{ data.title }}” is door alle partijen ondertekend{% if data.community %} ({{ data.community }}){% endif %}.
+
+Het ondertekende document en het bewijsrapport staan in OptimCE.
+
+{{ app_url }}{{ data.path }}
+
+--
+U ontvangt dit bericht omdat het uw OptimCE-account betreft.
+Uw meldingsvoorkeuren beheren: {{ preferences_url }}

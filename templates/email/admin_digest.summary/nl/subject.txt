@@ -1,0 +1,1 @@
+Uw administratief overzicht van {{ data.as_of_display }}

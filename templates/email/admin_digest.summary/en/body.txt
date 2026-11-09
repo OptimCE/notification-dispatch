@@ -1,0 +1,24 @@
+Here is what moved in your administrative procedures since the last summary, and what is left to do.
+
+{% for section in data.communities %}
+== {{ section.name }} ==
+{% if section.news %}
+Since {{ section.since_display }}
+{% for item in section.news %}- {% if item.news == "in_force" %}In effect since {{ item.effective_display }}: {{ item.procedure.en }}{% if item.operation %}, {{ item.operation }}{% endif %}{% elif item.news == "answer" %}{% if item.response %}Answer recorded: {{ item.response.en }}{% else %}Received mail to qualify{% endif %} — {{ item.procedure.en }}{% if item.operation %}, {{ item.operation }}{% endif %}{% else %}{% if item.news == "missed" %}Deadline missed{% elif item.news == "late" %}Answer overdue{% if item.party == 'grd' %} from the DSO{% elif item.party == 'regulator' %} from the regulator{% endif %}{% endif %}: {{ item.deadline.en }} — {{ item.procedure.en }}{% if item.operation %}, {{ item.operation }}{% endif %} (due on {{ item.due_display }}){% endif %}
+
+  {{ app_url }}{{ item.path }}
+{% endfor %}{% endif %}{% if section.overdue %}
+Overdue
+{% for item in section.overdue %}- {{ item.deadline.en }} — {{ item.procedure.en }}{% if item.operation %}, {{ item.operation }}{% endif %} (due on {{ item.due_display }}){% if item.party != "community" %} —{% if item.party == 'grd' %} from the DSO{% elif item.party == 'regulator' %} from the regulator{% endif %}{% endif %}
+
+  {{ app_url }}{{ item.path }}
+{% endfor %}{% endif %}{% if section.upcoming %}
+By {{ section.until_display }}
+{% for item in section.upcoming %}- {% if item.days_left <= 0 %}Today{% elif item.days_left == 1 %}Tomorrow{% else %}In {{ item.days_left }} days{% endif %}: {{ item.deadline.en }} — {{ item.procedure.en }}{% if item.operation %}, {{ item.operation }}{% endif %} (due on {{ item.due_display }})
+  {{ app_url }}{{ item.path }}
+{% endfor %}{% endif %}{% endfor %}
+Open my procedures: {{ app_url }}/administrative-document
+
+--
+You receive this summary because an administrator of your community chose you as a recipient. To stop receiving it, turn it off in your notification preferences.
+Manage your notification preferences: {{ preferences_url }}

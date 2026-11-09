@@ -1,0 +1,1 @@
+Votre récapitulatif administratif du {{ data.as_of_display }}

@@ -1,0 +1,8 @@
+{{ data.signer }} weigerde “{{ data.title }}” te ondertekenen{% if data.community %} ({{ data.community }}){% endif %}. Het ondertekeningsverzoek is afgesloten.
+
+Opgegeven reden: {{ data.reason }}
+
+{{ app_url }}{{ data.path }}
+
+--
+U ontvangt dit bericht omdat het uw OptimCE-account betreft.

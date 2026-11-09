@@ -1,0 +1,8 @@
+{% if data.community %}Die Gemeinschaft {{ data.community }} {% else %}Ihre Gemeinschaft {% endif %}bittet Sie, „{{ data.title }}“ zu unterzeichnen.
+
+Öffnen Sie das Dokument in OptimCE, lesen Sie es und unterzeichnen Sie es elektronisch. Zum Unterzeichnen werden Sie gebeten, sich erneut anzumelden.
+
+{{ app_url }}{{ data.path }}
+
+--
+Sie erhalten diese Nachricht, weil sie Ihr OptimCE-Konto betrifft.

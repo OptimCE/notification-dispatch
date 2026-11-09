@@ -1,0 +1,8 @@
+{{ data.signer }} declined to sign “{{ data.title }}”{% if data.community %} ({{ data.community }}){% endif %}. The signature request is closed.
+
+Reason given: {{ data.reason }}
+
+{{ app_url }}{{ data.path }}
+
+--
+You are receiving this message because it concerns your OptimCE account.

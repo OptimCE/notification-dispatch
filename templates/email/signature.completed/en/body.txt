@@ -1,0 +1,9 @@
+“{{ data.title }}” has been signed by every party{% if data.community %} ({{ data.community }}){% endif %}.
+
+The signed document and its evidence report are available in OptimCE.
+
+{{ app_url }}{{ data.path }}
+
+--
+You are receiving this message because it concerns your OptimCE account.
+Manage your notification preferences: {{ preferences_url }}

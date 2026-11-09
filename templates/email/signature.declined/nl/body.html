@@ -1,0 +1,9 @@
+{% extends "_layout.html" %}
+{% block content %}
+<p style="margin:0 0 14px 0;"><strong>{{ data.signer }}</strong> weigerde “<strong>{{ data.title }}</strong>” te ondertekenen{% if data.community %} ({{ data.community }}){% endif %}. Het ondertekeningsverzoek is afgesloten.</p>
+<p style="margin:0 0 14px 0;">Opgegeven reden: {{ data.reason }}</p>
+<p style="margin:22px 0 6px 0;"><a href="{{ app_url }}{{ data.path }}" style="display:inline-block;padding:10px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;">Het verzoek bekijken</a></p>
+{% endblock %}
+{% block footer %}
+U ontvangt dit bericht omdat het uw OptimCE-account betreft.
+{% endblock %}

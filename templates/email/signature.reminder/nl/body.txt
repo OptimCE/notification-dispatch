@@ -1,0 +1,6 @@
+Ter herinnering: “{{ data.title }}” wacht nog op uw handtekening{% if data.community %} ({{ data.community }}){% endif %}.
+
+{{ app_url }}{{ data.path }}
+
+--
+U ontvangt dit bericht omdat het uw OptimCE-account betreft.

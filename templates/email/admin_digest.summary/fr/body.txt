@@ -1,0 +1,24 @@
+Voici ce qui a bougé dans vos démarches administratives depuis le dernier récapitulatif, et ce qui reste à faire.
+
+{% for section in data.communities %}
+== {{ section.name }} ==
+{% if section.news %}
+Depuis le {{ section.since_display }}
+{% for item in section.news %}- {% if item.news == "in_force" %}En vigueur depuis le {{ item.effective_display }} : {{ item.procedure.fr }}{% if item.operation %}, {{ item.operation }}{% endif %}{% elif item.news == "answer" %}{% if item.response %}Réponse enregistrée : {{ item.response.fr }}{% else %}Courrier reçu à qualifier{% endif %} — {{ item.procedure.fr }}{% if item.operation %}, {{ item.operation }}{% endif %}{% else %}{% if item.news == "missed" %}Échéance dépassée{% elif item.news == "late" %}Réponse attendue en retard{% if item.party == 'grd' %} du GRD{% elif item.party == 'regulator' %} du régulateur{% endif %}{% endif %} : {{ item.deadline.fr }} — {{ item.procedure.fr }}{% if item.operation %}, {{ item.operation }}{% endif %} (échéance le {{ item.due_display }}){% endif %}
+
+  {{ app_url }}{{ item.path }}
+{% endfor %}{% endif %}{% if section.overdue %}
+En retard
+{% for item in section.overdue %}- {{ item.deadline.fr }} — {{ item.procedure.fr }}{% if item.operation %}, {{ item.operation }}{% endif %} (échéance le {{ item.due_display }}){% if item.party != "community" %} —{% if item.party == 'grd' %} du GRD{% elif item.party == 'regulator' %} du régulateur{% endif %}{% endif %}
+
+  {{ app_url }}{{ item.path }}
+{% endfor %}{% endif %}{% if section.upcoming %}
+D'ici le {{ section.until_display }}
+{% for item in section.upcoming %}- {% if item.days_left <= 0 %}Aujourd'hui{% elif item.days_left == 1 %}Demain{% else %}Dans {{ item.days_left }} jours{% endif %} : {{ item.deadline.fr }} — {{ item.procedure.fr }}{% if item.operation %}, {{ item.operation }}{% endif %} (échéance le {{ item.due_display }})
+  {{ app_url }}{{ item.path }}
+{% endfor %}{% endif %}{% endfor %}
+Ouvrir mes démarches : {{ app_url }}/administrative-document
+
+--
+Vous recevez ce récapitulatif parce qu'un administrateur de votre communauté vous a choisi comme destinataire. Pour ne plus le recevoir, désactivez-le dans vos préférences de notification.
+Gérer vos préférences de notification : {{ preferences_url }}

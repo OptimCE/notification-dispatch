@@ -1,0 +1,1 @@
+Ihre Verwaltungsübersicht vom {{ data.as_of_display }}

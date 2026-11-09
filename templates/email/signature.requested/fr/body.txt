@@ -1,0 +1,8 @@
+{% if data.community %}La communauté {{ data.community }} {% else %}Votre communauté {% endif %}vous demande de signer « {{ data.title }} ».
+
+Ouvrez le document dans OptimCE, lisez-le, puis signez-le électroniquement. Pour signer, il vous sera demandé de vous reconnecter.
+
+{{ app_url }}{{ data.path }}
+
+--
+Vous recevez ce message parce qu'il concerne votre compte OptimCE.

@@ -1,0 +1,1 @@
+Your administrative summary for {{ data.as_of_display }}

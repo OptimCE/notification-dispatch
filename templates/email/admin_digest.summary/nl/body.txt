@@ -1,0 +1,24 @@
+Dit is wat er sinds het vorige overzicht in uw administratieve procedures veranderde, en wat er nog te doen is.
+
+{% for section in data.communities %}
+== {{ section.name }} ==
+{% if section.news %}
+Sinds {{ section.since_display }}
+{% for item in section.news %}- {% if item.news == "in_force" %}In werking sinds {{ item.effective_display }}: {{ item.procedure.nl }}{% if item.operation %}, {{ item.operation }}{% endif %}{% elif item.news == "answer" %}{% if item.response %}Antwoord geregistreerd: {{ item.response.nl }}{% else %}Ontvangen post te kwalificeren{% endif %} — {{ item.procedure.nl }}{% if item.operation %}, {{ item.operation }}{% endif %}{% else %}{% if item.news == "missed" %}Termijn verstreken{% elif item.news == "late" %}Antwoord te laat{% if item.party == 'grd' %} van de DNB{% elif item.party == 'regulator' %} van de regulator{% endif %}{% endif %}: {{ item.deadline.nl }} — {{ item.procedure.nl }}{% if item.operation %}, {{ item.operation }}{% endif %} (termijn op {{ item.due_display }}){% endif %}
+
+  {{ app_url }}{{ item.path }}
+{% endfor %}{% endif %}{% if section.overdue %}
+Te laat
+{% for item in section.overdue %}- {{ item.deadline.nl }} — {{ item.procedure.nl }}{% if item.operation %}, {{ item.operation }}{% endif %} (termijn op {{ item.due_display }}){% if item.party != "community" %} —{% if item.party == 'grd' %} van de DNB{% elif item.party == 'regulator' %} van de regulator{% endif %}{% endif %}
+
+  {{ app_url }}{{ item.path }}
+{% endfor %}{% endif %}{% if section.upcoming %}
+Tot {{ section.until_display }}
+{% for item in section.upcoming %}- {% if item.days_left <= 0 %}Vandaag{% elif item.days_left == 1 %}Morgen{% else %}Over {{ item.days_left }} dagen{% endif %}: {{ item.deadline.nl }} — {{ item.procedure.nl }}{% if item.operation %}, {{ item.operation }}{% endif %} (termijn op {{ item.due_display }})
+  {{ app_url }}{{ item.path }}
+{% endfor %}{% endif %}{% endfor %}
+Mijn procedures openen: {{ app_url }}/administrative-document
+
+--
+U ontvangt dit overzicht omdat een beheerder van uw gemeenschap u als ontvanger heeft gekozen. Wilt u het niet meer ontvangen, schakel het dan uit in uw meldingsvoorkeuren.
+Uw meldingsvoorkeuren beheren: {{ preferences_url }}
