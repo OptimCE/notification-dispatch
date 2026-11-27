@@ -337,3 +337,34 @@ def test_the_summary_tells_a_procedure_in_force_and_the_answers(locale: str):
         )
         # The HTML links the procedure's label instead.
         assert said.split(" — ")[0].split(", ")[0].split(":")[0] in email.html
+
+
+@pytest.mark.parametrize("type_", ["data_export.ready", "data_export.failed"])
+@pytest.mark.parametrize("locale", LOCALES)
+def test_a_data_export_mail_links_to_the_tab_never_to_the_file(type_: str, locale: str):
+    """The spec: the mail warns, it never carries the export nor a link to the file.
+
+    The archive is downloaded in the app only (a presigned URL made at the click,
+    after the requester check), so the mail has the export tab and nothing else:
+    not the export's id, not a storage key, not a signed URL.
+    """
+    email = RENDERER.render(_message(type_, locale=locale), community_name="Les Coteaux")
+    for part in (email.html, email.text):
+        assert "https://app.optimce.test/users?tab=exports" in part
+        assert PAYLOADS[type_]["export_id"] not in part
+        assert "archives/" not in part and "X-Amz" not in part
+
+
+@pytest.mark.parametrize("locale", LOCALES)
+def test_a_ready_community_export_names_the_community_and_the_last_day(locale: str):
+    email = RENDERER.render(_message("data_export.ready", locale=locale), community_name=None)
+    for part in (email.html, email.text):
+        assert "Les Coteaux" in part and "23/11/2026" in part
+
+
+@pytest.mark.parametrize("locale", LOCALES)
+def test_a_personal_export_mail_names_no_community(locale: str):
+    """A user export's `community_name` is null: nothing about a community, no 'None'."""
+    email = RENDERER.render(_message("data_export.failed", locale=locale), community_name="C")
+    for part in (email.subject, email.html, email.text):
+        assert "None" not in part and "Les Coteaux" not in part

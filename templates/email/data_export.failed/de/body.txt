@@ -1,0 +1,10 @@
+Ihr Export {% if data.scope == "community" and data.community_name %}der Daten der Gemeinschaft {{ data.community_name }}{% else %}Ihrer personenbezogenen Daten{% endif %} konnte nicht vorbereitet werden. Wir wurden benachrichtigt.
+
+Sie können über den Reiter „Meine Exporte“ Ihres OptimCE-Profils einen neuen anfordern.
+
+Zu Ihrer Sicherheit enthält diese Nachricht weder die Datei noch einen direkten Link darauf.
+
+{{ app_url }}/users?tab=exports
+
+--
+Sie erhalten diese Nachricht, weil sie Ihr OptimCE-Konto betrifft.

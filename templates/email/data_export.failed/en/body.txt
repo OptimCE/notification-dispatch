@@ -1,0 +1,10 @@
+Your export {% if data.scope == "community" and data.community_name %}of the data of the community {{ data.community_name }}{% else %}of your personal data{% endif %} could not be prepared. We have been notified.
+
+You can ask for a new one from the "My exports" tab of your OptimCE profile.
+
+For your security, this message contains neither the file nor a direct link to it.
+
+{{ app_url }}/users?tab=exports
+
+--
+You are receiving this message because it concerns your OptimCE account.

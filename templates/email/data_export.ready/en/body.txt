@@ -1,0 +1,10 @@
+Your export {% if data.scope == "community" and data.community_name %}of the data of the community {{ data.community_name }}{% else %}of your personal data{% endif %} is ready.
+
+Download it from the "My exports" tab of your OptimCE profile, until {{ data.expires_display }}. After that date it will be deleted.
+
+For your security, this message contains neither the file nor a direct link to it.
+
+{{ app_url }}/users?tab=exports
+
+--
+You are receiving this message because it concerns your OptimCE account.

@@ -1,0 +1,10 @@
+{% extends "_layout.html" %}
+{% block content %}
+<p style="margin:0 0 14px 0;">Ihr Export {% if data.scope == "community" and data.community_name %}der Daten der Gemeinschaft <strong>{{ data.community_name }}</strong>{% else %}Ihrer personenbezogenen Daten{% endif %} konnte nicht vorbereitet werden. Wir wurden benachrichtigt.</p>
+<p style="margin:0 0 14px 0;">Sie können über den Reiter „Meine Exporte“ Ihres OptimCE-Profils einen neuen anfordern.</p>
+<p style="margin:0 0 14px 0;color:#57534e;">Zu Ihrer Sicherheit enthält diese Nachricht weder die Datei noch einen direkten Link darauf.</p>
+<p style="margin:22px 0 6px 0;"><a href="{{ app_url }}/users?tab=exports" style="display:inline-block;padding:10px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;">Meine Exporte öffnen</a></p>
+{% endblock %}
+{% block footer %}
+Sie erhalten diese Nachricht, weil sie Ihr OptimCE-Konto betrifft.
+{% endblock %}

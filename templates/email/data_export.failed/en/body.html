@@ -1,0 +1,10 @@
+{% extends "_layout.html" %}
+{% block content %}
+<p style="margin:0 0 14px 0;">Your export {% if data.scope == "community" and data.community_name %}of the data of the community <strong>{{ data.community_name }}</strong>{% else %}of your personal data{% endif %} could not be prepared. We have been notified.</p>
+<p style="margin:0 0 14px 0;">You can ask for a new one from the &quot;My exports&quot; tab of your OptimCE profile.</p>
+<p style="margin:0 0 14px 0;color:#57534e;">For your security, this message contains neither the file nor a direct link to it.</p>
+<p style="margin:22px 0 6px 0;"><a href="{{ app_url }}/users?tab=exports" style="display:inline-block;padding:10px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;">Open my exports</a></p>
+{% endblock %}
+{% block footer %}
+You are receiving this message because it concerns your OptimCE account.
+{% endblock %}

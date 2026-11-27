@@ -1,0 +1,10 @@
+Uw export {% if data.scope == "community" and data.community_name %}van de gegevens van de gemeenschap {{ data.community_name }}{% else %}van uw persoonsgegevens{% endif %} staat klaar.
+
+Download hem via het tabblad “Mijn exports” van uw OptimCE-profiel, tot {{ data.expires_display }}. Daarna wordt hij verwijderd.
+
+Voor uw veiligheid bevat dit bericht noch het bestand, noch een rechtstreekse link ernaartoe.
+
+{{ app_url }}/users?tab=exports
+
+--
+U ontvangt dit bericht omdat het uw OptimCE-account betreft.
