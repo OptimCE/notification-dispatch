@@ -1,0 +1,10 @@
+Uw export {% if data.scope == "community" and data.community_name %}van de gegevens van de gemeenschap {{ data.community_name }}{% else %}van uw persoonsgegevens{% endif %} kon niet worden voorbereid. Wij zijn op de hoogte gebracht.
+
+U kunt een nieuwe aanvragen via het tabblad “Mijn exports” van uw OptimCE-profiel.
+
+Voor uw veiligheid bevat dit bericht noch het bestand, noch een rechtstreekse link ernaartoe.
+
+{{ app_url }}/users?tab=exports
+
+--
+U ontvangt dit bericht omdat het uw OptimCE-account betreft.

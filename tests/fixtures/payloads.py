@@ -235,6 +235,20 @@ PAYLOADS: dict[str, dict[str, Any]] = {
             }
         ],
     },
+    # crm-backend's export worker: which export and until when, never its content
+    # (`expires_display` is the Brussels date, like the summary's `*_display`).
+    "data_export.ready": {
+        "export_id": "0b7d3c6e-5a1f-4c2e-9f00-000000000001",
+        "scope": "community",
+        "community_name": "Les Coteaux",
+        "expires_at": "2026-11-23T14:05:00.000Z",
+        "expires_display": "23/11/2026",
+    },
+    "data_export.failed": {
+        "export_id": "0b7d3c6e-5a1f-4c2e-9f00-000000000002",
+        "scope": "user",
+        "community_name": None,
+    },
     # The fallback renders from `type` alone and must reference no data at all,
     # which is what lets an unknown type from a future producer degrade instead
     # of dead-lettering.

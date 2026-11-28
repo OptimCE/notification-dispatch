@@ -114,6 +114,11 @@ EMAIL_TYPES: tuple[str, ...] = (
     "signature.reminder",
     "signature.declined",
     "signature.completed",
+    # crm-backend's export worker (src/modules/exports/worker/notifier.ts builds
+    # `data`). The mail links to the requester's export tab, never to the file.
+    # data_export.requested is in-app only, so it has no template.
+    "data_export.ready",
+    "data_export.failed",
 )
 
 #: Rendered when `type` has no template of its own.
